@@ -33,4 +33,8 @@ public class PalTrackerApplication {
                 .build();
     }
 
+    public void doNothing(){
+
+    }
+
 }
