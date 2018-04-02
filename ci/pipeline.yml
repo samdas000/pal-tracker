@@ -81,7 +81,7 @@ jobs:
       manifest: pal-tracker/manifest-review.yml
       path: pal-tracker-artifacts/pal-tracker-*.jar
       environment_variables:
-        WELCOME_MESSAGE: "Hello from Cloud Foundry"
+        WELCOME_MESSAGE: "Hello from the review environment"
 
 - name: deploy-production
   plan:
@@ -98,12 +98,13 @@ jobs:
       CF_ORG: {{cf-org}}
       CF_SPACE: production
       MYSQL_IP: {{mysql-ip}}
-      DATABASE_NAME: {{production-database-name}}
-      DATABASE_USERNAME: {{production-database-username}}
-      DATABASE_PASSWORD: {{production-database-password}}
+      DATABASE_NAME: {{review-database-name}}
+      DATABASE_USERNAME: {{review-database-username}}
+      DATABASE_PASSWORD: {{review-database-password}}
+
   - put: production-deployment
     params:
       manifest: pal-tracker/manifest-production.yml
       path: pal-tracker-artifacts/pal-tracker-*.jar
       environment_variables:
-        WELCOME_MESSAGE: "Hello from Cloud Foundry"
+        WELCOME_MESSAGE: "Hello from the production environment"
